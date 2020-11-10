@@ -1,4 +1,4 @@
-# Otimizacao Multiobjetivo de Controle de Producao de Pocos de Petroleo por Algoritmos Geneticos
+# Otimização Multiobjetivo de Controle de Produção de Poços de Petróleo por Algoritmos Genéticos
 
   Este trabalho visa a construção de um sistema de apoio a decisão para otimização multiobjetivo, que utiliza Algoritmos Genéticos para definir o controle de produção de poços de petróleo de maneira otimizada buscando maximizar tanto o valor presente líquido do projeto quanto maximizar o fator de recuperação do reservatório.
 

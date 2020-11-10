@@ -1,0 +1,230 @@
+**********************************************************************
+**   EXEMPLO: PROGRAMA OTIMO VALOR - IMEX
+**   Modelo sintético com 3 camadas
+**   
+**   Alexandre Emerick - CENPES/PDP/TR
+**   emerick@petrobras.com.br
+**********************************************************************
+
+**************************************************
+** ARQUIVOS DE ENTRADA PARA OS RESTART
+**
+*FILENAMES *OUTPUT
+           *INDEX-IN '$IRF_FILE'
+           *MAIN-RESULTS-IN '$MRF_FILE'
+           *INDEX-OUT 
+           *MAIN-RESULTS-OUT 
+**************************************************
+
+**********************************************************************
+** SECAO 1: CONTROLE DE ENTRADA E SAIDA
+**********************************************************************
+
+*TITLE1 'Reservatorio linear 3 camadas'
+
+** CHAMA A RODADA DE RESTART
+** Substituir o Tag por *RESTART #TSTEP
+
+*INUNIT  *MODSI
+*OUTUNIT *SI
+
+*WSRF *WELL *TIME  ** Resultados de poco a cada timestep
+*WSRF *GRID *TIME   ** Resultados de malha a cada timestep
+
+*OUTSRF *WELL *ALL
+*OUTSRF *GRID *SW *SO *PRES
+
+*OUTPRN *WELL *ALL
+*OUTPRN *GRID *NONE
+*OUTPRN *TABLES *NONE
+*OUTPRN *RES *NONE
+
+*WPRN *WELL *TIME
+*WPRN   *GRID 0
+
+**WRST  *TIME  ** Grava os registros de RESTART a cada *TIME ou *DATE
+
+**********************************************************************
+** SECAO 2: DESCRICAO DO RESERVATORIO
+**********************************************************************
+
+*GRID *CART 40 11 3
+*KDIR *DOWN
+*DI *CON 50
+*DJ *CON 50
+*DK *CON 10
+*DTOP 440*2000
+*NULL *CON 1
+*POR *CON 0.20
+*PERMI *KVAR
+  500
+  800
+  1200
+*PERMJ *KVAR
+  500
+  800
+  1200
+*PERMK *KVAR
+  50
+  70
+  120
+
+** Folhelhos entre as camadas 1-2 e 2-3
+*TRANSK *IJK 1:40 1:11 1 0.0
+*TRANSK *IJK 1:40 1:11 2 0.0
+*TRANSK *IJK 1:40 1:11 3 0.0
+
+*CPOR 1.0E-5
+*PRPOR 300
+
+*SECTOR 'teste' 1:40 1:11 1:3
+
+**********************************************************************
+** SECAO 3: PROPRIEDADE DOS COMPONENTES
+**********************************************************************
+
+*MODEL *BLACKOIL
+*TRES 80.0
+
+** Dados PVT
+*PVT *BG 1
+**   p       Rs     Bo          Bg      VisO    VisG
+** kgf/cm2  m3/m3  m3/m3STD  m3/m3STD    cp      cp
+   1.03     0.16   1.0745   3.5200E-01  9.22  5.5317E-03
+   7.02     1.32   1.0780   5.1805E-02  8.65  1.1304E-02
+  13.01     2.59   1.0819   2.7583E-02  8.10  1.7093E-02
+  19.00     3.91   1.0860   1.8774E-02  7.60  2.3519E-02
+  24.99     5.28   1.0901   1.4190E-02  7.14  3.0841E-02
+  30.98     6.68   1.0944   1.1380E-02  6.72  3.9209E-02
+  36.97     8.10   1.0988   9.4819E-03  6.34  4.8760E-02
+  42.96     9.55   1.1032   8.1149E-03  5.99  5.9634E-02
+  60.92    14.00   1.1168   5.6336E-03  5.14  1.0166E-01
+ 400.00   281.26   1.3732   1.0000E-03  0.50  8.0812E+00
+
+*DENSITY *OIL 850
+*DENSITY *WATER 1000.0
+*GRAVITY *GAS 0.60
+
+*CO 1.1772E-04
+*CVO 1.9980E-02
+
+*BWI 1.0
+*CW 1.0E-05
+*REFPW 100.0
+*VWI 1.0
+*CVW 0.0
+
+**********************************************************************
+** SECAO 4: PROPRIEDADES ROCHA-FLUIDO
+**********************************************************************
+*ROCKFLUID
+
+*RPT 1
+*SWT
+** Sw    krw    krow  Pcow
+  0.20 0.00000 0.8000 0.
+  0.22 0.00048 0.7373 0.
+  0.25 0.00300 0.6480 0.
+  0.28 0.00768 0.5645 0. 
+  0.30 0.01200 0.5120 0.
+  0.33 0.02028 0.4381 0.
+  0.35 0.02700 0.3920 0. 
+  0.38 0.03888 0.3277 0.
+  0.40 0.04800 0.2880 0.
+  0.43 0.06348 0.2333 0.
+  0.45 0.07500 0.2000 0.
+  0.48 0.09408 0.1549 0.
+  0.50 0.10800 0.1280 0.
+  0.53 0.13068 0.0925 0.
+  0.55 0.14700 0.0720 0.
+  0.57 0.16428 0.0541 0.
+  0.60 0.19200 0.0320 0.
+  0.62 0.21168 0.0205 0.
+  0.65 0.24300 0.0080 0.
+  0.70 0.30000 0.0000 0.
+
+*SLT *SMOOTH *PLAW 2.000 2.000 1.0
+ 0.20  0.90  0.00
+ 1.00  0.00  0.80
+
+**********************************************************************
+** SECAO 5: CONDICOES INICIAIS
+**********************************************************************
+*INITIAL
+
+*VERTICAL *BLOCK_CENTER *WATER_OIL_GAS
+*REFDEPTH 2000
+*REFPRES 250
+*DWOC 3000
+*DGOC 0
+*PB *CON 78.0
+
+**********************************************************************
+** SECAO 6: CONTROLE DOS METODOS NUMERICOS
+**********************************************************************
+*NUMERICAL
+
+*AIM *STAB
+*NCUTS 10
+** *DTMIN 1.0
+*DTMAX 365
+
+**********************************************************************
+** SECAO 7: DEFINICAO DOS DADOS DE POCO E DADOS RECORRENTES
+**********************************************************************
+*RUN
+*DATE 2004  1  1
+
+*GROUP 'INJETOR1'   *ATTACHTO 'INJETORES'
+*GROUP 'PRODUCER1'  *ATTACHTO 'PRODUTORES'
+*GROUP 'PRODUTORES' *ATTACHTO 'FIELD'
+*GROUP 'INJETORES'  *ATTACHTO 'FIELD'
+
+
+*****************************************************************************
+** POCO PRODUTOR - COMPLETACAO INTELIGENTE
+*****************************************************************************
+*WELL 1 'PROD1' *ATTACHTO 'PRODUCER1'
+*PRODUCER 'PROD1'
+*OPERATE *MAX *STL 400
+*OPERATE *MIN *BHP 78
+*GEOMETRY *K 0.100 0.37 1.0 0
+*PERF *GEO 'PROD1' 
+** UBA     ff  Status  Connection  
+**$ FF 3
+    40 6 1  1.  OPEN   FLOW-TO 'SURFACE'
+    40 6 2  1.  OPEN   FLOW-TO  1
+    40 6 3  1.  OPEN   FLOW-TO  2
+*****************************************************************************
+** POCO INJETOR - COMPLETACAO INTELIGENTE
+*****************************************************************************
+*WELL 2 'INJ1' *ATTACHTO 'INJETOR1'
+*INJECTOR MOBWEIGHT 'INJ1'
+*INCOMP *WATER
+*OPERATE *MAX *STW 400
+*OPERATE *MAX *BHP 400
+*GEOMETRY *K 0.100 0.37 1.0 0
+*PERF *GEO 'INJ1'
+** UBA     ff  Status  Connection  
+**$ FF 3
+    1 6 1  1.  OPEN   FLOW-FROM 'SURFACE'
+    1 6 2  1.  OPEN   FLOW-FROM 1
+    1 6 3  1.  OPEN   FLOW-FROM 2
+
+*LAYERCLUMP 'CLUMP_p1'
+  'PROD1'  40 6 1
+*LAYERCLUMP 'CLUMP_p2'
+  'PROD1'  40 6 2
+*LAYERCLUMP 'CLUMP_p3'
+  'PROD1'  40 6 3
+*LAYERCLUMP 'CLUMP_p4'
+  'INJ1'  1 6 1
+*LAYERCLUMP 'CLUMP_p5'
+  'INJ1'  1 6 2
+*LAYERCLUMP 'CLUMP_p6'
+  'INJ1'  1 6 3
+
+*INCLUDE Time_template.inc
+
+*DATE 2014 1 1
+*STOP

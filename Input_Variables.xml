@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<FlexwellEconomicList>
+<OilPrice> 60 </OilPrice> <!-- Unit US$/bbl -->
+<GasPrice> 200 </GasPrice> <!-- Unit US$/mil m3 -->
+<Royalties> 0.10 </Royalties> <!-- Adimensional (%) -->
+<IReContribuicaoSocial> 0.34 </IReContribuicaoSocial> <!-- Adimensional (%) -->
+<TaxaDescontoApropriada> 0.10 </TaxaDescontoApropriada> <!-- %/ano -->
+<WorkoverCostForProducerCC> 10 </WorkoverCostForProducerCC> <!-- milhoes US$/poco Custo de Workover de pocos produtores de Completacao Convencional  -->
+<WorkoverFrequencyForProducerCC> 0.167 </WorkoverFrequencyForProducerCC> <!-- % anual Frequencia de Workover de pocos produtores de Completacao Convencional -->
+<WorkoverCostForProducerIC> 12 </WorkoverCostForProducerIC> <!-- milhoes US$/poco Custo de Workover de pocos produtores de Completacao Inteligente  -->
+<WorkoverFrequencyForProducerIC> 0.10 </WorkoverFrequencyForProducerIC> <!-- % anual Frequencia de Workover de pocos produtores de Completacao Inteligente -->
+<WorkoverCostForInjectorCC> 7.5 </WorkoverCostForInjectorCC> <!-- milhoes US$/poco Custo de Workover de pocos injetores de Completacao Convencional  -->
+<WorkoverFrequencyForInjectorCC> 0.143 </WorkoverFrequencyForInjectorCC> <!-- % anual Frequencia de Workover de pocos injetores de Completacao Convencional -->
+<WorkoverCostForInjectorIC> 9 </WorkoverCostForInjectorIC> <!-- milhoes US$/poco Custo de Workover de pocos injetores de Completacao Inteligente  -->
+<WorkoverFrequencyForInjectorIC> 0.10 </WorkoverFrequencyForInjectorIC> <!-- % anual Frequencia de Workover de pocos injetores de Completacao Inteligente -->
+<OtherFixedCosts> 300 </OtherFixedCosts> <!-- milhoes US$/ano -->
+<OilTreatment> 1 </OilTreatment> <!-- US$/bbl -->
+<OilTransport> 9 </OilTransport> <!-- US$/bbl -->
+<GasTreatment> 10 </GasTreatment> <!-- US$/mil m3 -->
+<GasTransport> 60 </GasTransport> <!-- US$/mil m3 -->
+<ProductionWaterTreatment> 12.58 </ProductionWaterTreatment> <!-- US$/m3 -->
+<InjectionWaterTreatment> 7 </InjectionWaterTreatment> <!-- US$/m3 -->
+<OtherInvestmentsCosts> 70 </OtherInvestmentsCosts> <!-- milhoes US$ Qualquer outros custos de investimento (ANMs, UEPs, linhas, risers, etc) -->
+<DepreciationTime> 10 </DepreciationTime> <!-- anos Tempo de aplicação da depreciacao em anos -->
+<DepreciationReductionTax> 0.05 </DepreciationReductionTax> <!-- % anual Taxa de inflacao incidente na depreciacao -->
+<AbandonCost> 6.25 </AbandonCost> <!-- milhoes US$/poco -->
+<CCProducerCost> 11.25 </CCProducerCost> <!-- milhoes US$/poco Custo de completacao convencional para produtores Nao deve englobar o custo da ANM -->
+<CIProducerCost> 13.25 </CIProducerCost> <!-- milhoes US$/poco Custo de completacao inteligente para produtores Nao deve englobar o custo da ANM -->
+<CCInjectorCost> 10 </CCInjectorCost> <!-- milhoes US$/poco Custo de completacao convencional para injetores Nao deve englobar o custo da ANM -->
+<CIInjectorCost> 12 </CIInjectorCost> <!-- milhoes US$/poco Custo de completacao inteligente para injetores Nao deve englobar o custo da ANM -->
+<ProducerPerforationCost> 8.75 </ProducerPerforationCost> <!-- milhoes US$/poco Custo de perfuracao de um poço produtor -->
+<InjectorPerforationCost> 8.75 </InjectorPerforationCost> <!-- milhoes US$/poco Custo de perfuracao de um poço injetor -->
+</FlexwellEconomicList>

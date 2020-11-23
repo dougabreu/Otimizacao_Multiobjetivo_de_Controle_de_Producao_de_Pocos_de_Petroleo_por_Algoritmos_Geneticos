@@ -2,8 +2,8 @@
 
   <h3> Aluno: Douglas de Souza Abreu  
   <h3> Matrícula: 161.898.019
-  
-  
+  <br>
+ 
   Este trabalho visa a construção de um sistema de apoio a decisão para otimização multiobjetivo, que utiliza Algoritmos Genéticos para definir o controle de produção de poços de petróleo de maneira otimizada buscando maximizar tanto o valor presente líquido do projeto quanto maximizar o fator de recuperação do reservatório.
 
   O desenvolvimento desse trabalho foi feito em MatLab integrando a modelagem do Algoritmo Genético como otimizador e do simulador de reservatórios IMEX como avaliador das soluções. Para controle de produção de poços, foi utilizado o controle por válvulas de fluxo de poços inteligentes fazendo com que para cada poço tenhamos múltiplas possibilidades de configuração de controle de válvulas. Neste trabalho, buscamos encontrar a configuração ótima de controle de fluxo que maximize tanto o fator de recuperação do reservatório quanto o valor presente líquido do projeto, para tal utilizamos o conceito de otimização multiobjetivo.
